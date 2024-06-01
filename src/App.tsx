@@ -1,10 +1,32 @@
 import React from 'react';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet
+} from "react-router-dom";
+import { Home, Login, Template} from './pages';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Template />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/Login",
+        element: <Login />,
+      },
+    ],
+  },
+]);
+
 
 const App = () => {
   return (
-    <>
-      <h1>Hello Wolrd</h1>
-    </>
+    <RouterProvider router={router} />
   );
 }
 
